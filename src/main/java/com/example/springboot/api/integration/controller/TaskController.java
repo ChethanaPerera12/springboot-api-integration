@@ -24,11 +24,11 @@ public class TaskController {
     public List<Task> getAllTask() {
         return taskService.getAllTask();
     }
-    @PostMapping("/api/tasks")
+    @PostMapping("/api/task")
     public Task createTask(@RequestBody Task task) {
         return taskService.createTask(task);
     }
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/api/task/{id}")
     public ApiResponse deleteTask(@PathVariable Long id) throws Exception {
         taskService.deleteTask(id);
         ApiResponse apiResponse = new ApiResponse();

@@ -1,5 +1,6 @@
 package com.example.springboot.api.integration.service;
 
+import com.example.springboot.api.integration.exception.ResourceNotFoundException;
 import com.example.springboot.api.integration.model.Task;
 import com.example.springboot.api.integration.repository.TaskRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,8 +25,9 @@ public class TaskServiceImpl implements TaskService {
 
     @Override
     public void deleteTask(Long id) {
-        Task task=taskRepository.findById(id).orElseThrow(()->new Exception("Task not exist"));
-        taskRepository.delete();
+        Task task = taskRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Task not found with id: " + id));
 
+        taskRepository.delete(task);
     }
 }
