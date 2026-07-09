@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequestMapping("/api")
 public class TaskController {
     @Autowired
     private TaskService taskService;
@@ -20,15 +21,15 @@ public class TaskController {
         apiResponse.setStatus(true);
         return apiResponse;
     }
-    @GetMapping("/api/task")
+    @GetMapping("/task")
     public List<Task> getAllTask() {
         return taskService.getAllTask();
     }
-    @PostMapping("/api/task")
+    @PostMapping("/task")
     public Task createTask(@RequestBody Task task) {
         return taskService.createTask(task);
     }
-    @DeleteMapping("/api/task/{id}")
+    @DeleteMapping("/task/{id}")
     public ApiResponse deleteTask(@PathVariable Long id) throws Exception {
         taskService.deleteTask(id);
         ApiResponse apiResponse = new ApiResponse();
