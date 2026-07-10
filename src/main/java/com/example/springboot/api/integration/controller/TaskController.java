@@ -3,17 +3,17 @@ package com.example.springboot.api.integration.controller;
 import com.example.springboot.api.integration.model.ApiResponse;
 import com.example.springboot.api.integration.model.Task;
 import com.example.springboot.api.integration.service.TaskService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/api")
+@RequiredArgsConstructor
 @CrossOrigin(origins = "http://localhost:5173")
 public class TaskController {
-    @Autowired
-    private TaskService taskService;
+    private final TaskService taskService;
 
     @GetMapping("/api")
     public ApiResponse homeController() {

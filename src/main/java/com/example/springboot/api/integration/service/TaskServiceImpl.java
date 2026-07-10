@@ -3,15 +3,16 @@ package com.example.springboot.api.integration.service;
 import com.example.springboot.api.integration.exception.ResourceNotFoundException;
 import com.example.springboot.api.integration.model.Task;
 import com.example.springboot.api.integration.repository.TaskRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class TaskServiceImpl implements TaskService {
-    @Autowired
-    private TaskRepository taskRepository;
+
+    private final TaskRepository taskRepository;
 
     @Override
     public List<Task> getAllTask() {
