@@ -31,7 +31,7 @@ public class TaskController {
         return taskService.createTask(task);
     }
     @DeleteMapping("/task/{id}")
-    public ApiResponse deleteTask(@PathVariable Long id) throws Exception {
+    public ApiResponse deleteTask(@PathVariable Long id){
         taskService.deleteTask(id);
         ApiResponse apiResponse = new ApiResponse();
         apiResponse.setMessage("task deleted successfully");
